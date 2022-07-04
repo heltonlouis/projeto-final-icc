@@ -1,42 +1,77 @@
+/* Bibliotecas necessárias para rodar o programa*/
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+
+/* incluindo as funções em outros arquivos*/
 #include "funcionario.c"
 #include "paciente.c"
+int funcionario(void);
+int paciente(void);
 
+/* Escopo para variáveis globais*/
+int opcao;
+bool sair = false;
 
-int main()
+/* Vacinas *//* 
+typedef struct
 {
-    int escolhaUsuario;
-    bool final = true;
+    char tipo[50];
+    int quantidade;
+    Postos posto;
+} Vacinas;
+ */
+/* Funcionarios *//* 
+typedef struct
+{
+    int matricula;
+    char nome[50];
+} Funcionarios; */
 
-    printf("********************************\n");
-    printf("COVID - 19\n");
+int main(void)
+{
+    menuPrincipal();
 
-    do
-    {
-        printf(" Digie 1 para paciente\n");
-        printf(" Digie 2 para funcionario\n");
-
-        scanf("%d", &escolhaUsuario);
-        switch (escolhaUsuario)
+    do{
+        switch (opcao)
         {
         case 1:
             system("@cls||clear");
             paciente();
-            break;
-
+            menuPrincipal();
+            continue;
         case 2:
             system("@cls||clear");
             funcionario();
+            menuPrincipal();
+            continue;
+        case 0:
+            sair = true;
             break;
-
         default:
+            printf("OPÇÃO INVÁLIDA! TENTE NOVAMENTE...\n");
+            sleep(2);
             system("@cls||clear");
-            printf(" Opção Inválida \n");
-            break;
+            menuPrincipal();
         }
 
-    } while (final == true);
+    } while (sair == false);
+
+    return 0;
+}
+
+int menuPrincipal(void)
+{
+    printf("############## VACINAÇÃO CONTRA COVID-19 ##############\n");
+    printf("ESCOLHA UMA DAS OPÇÕES ABAIXO\n");
+    printf("[ 1 ] PARA AGENDAR VACINAÇÃO\n");
+    printf("[ 2 ] PARA ACESSAR COMO FUNCIONÁRIO\n");
+    printf("[ 0 ] PARA ENCERRAR O PROGRAMA\n");
+    printf("########################################################\n\n");
+
+    printf("Opção: ");
+    scanf("%d", &opcao);
 
     return 0;
 }
