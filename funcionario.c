@@ -36,9 +36,8 @@ int funcionario(void)
             menuFuncionario();
             continue;
         case 2:
-            printf("Entrou no 2 \n");
-            sleep(2);
             system("@cls||clear");
+            listarPostos();
             menuFuncionario();
             continue;
         case 3:
@@ -95,9 +94,12 @@ int cadastrarPostos(void)
     menuPostos();
     do
     {
+        system("@cls||clear");
         printf("Quantos Postos deseja cadastrar? ");
         scanf("%d", &c);
         limpar_entrada();
+
+        system("@cls||clear");
 
         for (i=0; i<c; i++) {
             printf("Digite o nome do Posto: ");
@@ -111,6 +113,7 @@ int cadastrarPostos(void)
             gets(&postos[qtdPostos].logradouro);
 
             qtdPostos++;
+            system("@cls||clear");
         }
 
         for (i=0; i<qtdPostos; i++) {
@@ -136,4 +139,21 @@ int cadastrarPostos(void)
     } while (voltar == false);
     voltar = false;
     return 0;
+}
+
+int listarPostos() {
+
+    printf("################################################\n");
+    printf("         LISTA DE POSTOS DE VACINAÇÃO\n");
+    printf("################################################\n\n");
+
+    for (i=0; i<qtdPostos; i++) {
+        printf("\nPosto: %s", postos[i].nome);
+    }
+
+    printf("\n\n");
+
+    limpar_entrada(); 
+    printf("\nPressione Enter, para voltar ao menu!");
+    while( getchar() != '\n' );
 }
