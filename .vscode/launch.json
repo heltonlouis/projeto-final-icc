@@ -1,5 +1,4 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
             "name": "C/C++: gcc-10 Compilar e depurar o arquivo ativo",
@@ -27,5 +26,6 @@
             "preLaunchTask": "C/C++: gcc-10 arquivo de build ativo",
             "miDebuggerPath": "/usr/bin/gdb"
         }
-    ]
+    ],
+    "version": "2.0.0"
 }

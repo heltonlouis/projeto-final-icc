@@ -14,21 +14,6 @@ int paciente(void);
 int opcao;
 bool sair = false;
 
-/* Vacinas *//* 
-typedef struct
-{
-    char tipo[50];
-    int quantidade;
-    Postos posto;
-} Vacinas;
- */
-/* Funcionarios *//* 
-typedef struct
-{
-    int matricula;
-    char nome[50];
-} Funcionarios; */
-
 int main(void)
 {
     menuPrincipal();
@@ -39,11 +24,13 @@ int main(void)
         case 1:
             system("@cls||clear");
             paciente();
+            system("@cls||clear");
             menuPrincipal();
             continue;
         case 2:
             system("@cls||clear");
             funcionario();
+            system("@cls||clear");
             menuPrincipal();
             continue;
         case 0:
