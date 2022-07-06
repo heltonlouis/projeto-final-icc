@@ -599,20 +599,59 @@ int cadastrarVacinas()
 
 int listarVacinas()
 {
-
-    printf("################################################\n");
-    printf("         LISTA DE VACINAS CADASTRADAS\n");
-    printf("################################################\n\n");
-
-    for (i = 0; i < qtdVacinas; i++)
+    do
     {
-        printf("\nVacina: %s, quantidade: %d", vacinas[i].nome, vacinas[i].quantidade);
-    }
+        printf("################################################\n");
+        printf("         LISTA DE VACINAS CADASTRADAS\n");
+        printf("################################################\n\n");
 
-    printf("\n\n");
+        printf("\n[ 0 ] PARA VOLTAR AO MENU ANTERIOR");
+        for (i = 0; i < qtdVacinas; i++)
+        {
+            printf("\n[ %d ] - Vacina: %s, quantidade: %d", i+1, vacinas[i].nome, vacinas[i].quantidade);
+        }
 
-    printf("\nPressione Enter, para voltar ao menu!");
-    while (getchar() != '\n');
+        printf("\n\nDigite uma opção de vacina ou 0 para sair: ");
+        scanf("%d", &cont);
+
+        if (cont == 0)
+        {
+            voltar = true;
+            break;
+        }
+
+        for (j = 0; j < cont; j++)
+        {
+            if (cont == j+1)
+            {
+                system("@cls||clear");
+                editarVacinas(j); // função para entrar no posto
+                break;
+            }
+        }
+    } while (voltar == false);
+    voltar = false;
+
+}
+
+int editarVacinas() {
+    do
+    {
+        printf("################################################\n\n");
+        printf("Vacina: %s, Quantidade: %d \n", vacinas[j].nome, vacinas[j].quantidade);
+        printf("################################################\n\n");
+        
+        printf("\nAumentar Estoque de Vacinas");
+        printf("\nDigite a quantidade adicional: ");
+        scanf("%d", &cont);
+        limpar_entrada();
+
+        vacinas[j].quantidade += cont;
+        printf("\nVacina Atualizada com sucesso!\n\n");
+        break;
+
+    } while (voltar == false);
+    voltar = false;
 }
 
 int vagasAgendamento(){
